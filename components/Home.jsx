@@ -25,7 +25,7 @@ export default function Home() {
     const [temp, setTemp] = useState('');
     const [min, setMin] = useState('');
     const [max, setMax] = useState('');
-    const [icon, setIcon] = useState('');
+    const [iconHome, setIconHome] = useState('');
     // const [country, setCountry] = useState('');
 
     const ville = "Toulouse";
@@ -41,7 +41,7 @@ fetch(
            setTemp(r.main.temp.toFixed(1))
            setMin(r.main.temp_min.toFixed(1))
            setMax(r.main.temp_max.toFixed(1))
-           setIcon(r.weather[0].icon) 
+           setIconHome(r.weather[0].icon) 
         //    setCountry(getCountryName(r.sys.country))
         });
 
@@ -50,11 +50,11 @@ fetch(
         <View>
             <View style={stylesHome.containerHeader}>
                 <Text style={stylesHome.bigTitle}>Victor Météo</Text>
-    <Text style={stylesHome.time}>le {date}/{month}/{year} à {heure}:{minu}</Text>
+                <Text style={stylesHome.time}>le {date}/{month}/{year} à {heure}:{minu}</Text>
             </View>
             <View style={stylesHome.containerWeather}>
                 <Text style={stylesHome.cityTitle}>{city}</Text>
-                <Image source={require(`../assets/icon.png`)} style={stylesHome.imgLogo}></Image>
+                <Image source={require(`../assets/${iconHome}.png`)} style={stylesHome.imgLogo}></Image>
     <Text style={stylesHome.bigTitleDegre}>{temp}ºC</Text>
     <Text style={stylesHome.infoWeather}>{desc}</Text>
             </View>
