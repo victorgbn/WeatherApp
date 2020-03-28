@@ -27,8 +27,12 @@ export default function Home() {
     const [max, setMax] = useState('');
     const [icon, setIcon] = useState('');
     // const [country, setCountry] = useState('');
+
+    const ville = "Toulouse";
+    const apikey = "008b40e40732624e015ce068cbf7ac72"
+
 fetch(
-    `https://api.openweathermap.org/data/2.5/weather?q=toulouse&appid=008b40e40732624e015ce068cbf7ac72&units=metric&lang=fr`
+    `https://api.openweathermap.org/data/2.5/weather?q=${ville}&appid=${apikey}&units=metric&lang=fr`
         )
         .then((response) => response.json())
         .then(r => { 
@@ -50,7 +54,7 @@ fetch(
             </View>
             <View style={stylesHome.containerWeather}>
                 <Text style={stylesHome.cityTitle}>{city}</Text>
-                <Image source={require(`../assets/sun.png`)} style={stylesHome.imgLogo}></Image>
+                <Image source={require(`../assets/icon.png`)} style={stylesHome.imgLogo}></Image>
     <Text style={stylesHome.bigTitleDegre}>{temp}ºC</Text>
     <Text style={stylesHome.infoWeather}>{desc}</Text>
             </View>

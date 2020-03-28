@@ -11,10 +11,17 @@ export default function Previsions() {
     const [max, setMax] = useState('');
     const [icon, setIcon] = useState('');
     const [prevDt, setPrevDt] = useState('');
-    
+    const [prevDt1, setPrevDt1] = useState('');
+    const [prevDt2, setPrevDt2] = useState('');
+    const [prevTemp, setPrevTemp] = useState('');
+    const [prevTemp1, setPrevTemp1] = useState('');
+    const [prevTemp2, setPrevTemp2] = useState('');
+
+    const ville = "Toulouse";
+    const apikey = "008b40e40732624e015ce068cbf7ac72"
 
     fetch(
-        `http://api.openweathermap.org/data/2.5/forecast?q=toulouse&appid=008b40e40732624e015ce068cbf7ac72&units=metric&lang=fr`
+        `http://api.openweathermap.org/data/2.5/forecast?q=${ville}&appid=${apikey}&units=metric&lang=fr`
             )
             .then((response) => response.json())
             .then(r => { 
@@ -25,6 +32,13 @@ export default function Previsions() {
             //    setMax(r.main.temp_max.toFixed(1))
             //    setIcon(r.weather[0].icon)
                setPrevDt(r.list[0].dt_txt)
+               setPrevDt1(r.list[1].dt_txt)
+               setPrevDt2(r.list[2].dt_txt)
+               setPrevTemp(r.list[0].main.temp)
+               setPrevTemp1(r.list[1].main.temp)
+               setPrevTemp2(r.list[2].main.temp)
+
+
             //    setCountry(getCountryName(r.sys.country))
             });
 
@@ -34,19 +48,19 @@ export default function Previsions() {
             <View style={stylesHome.containerPrevision}>
             <Image source={require('../assets/sun.png')} style={stylesHome.imgPrevision}></Image>
             <Text style={stylesHome.textDegrePrevision}>{prevDt}</Text>
-            <Text style={stylesHome.textDegrePrevision}>25º</Text>
+            <Text style={stylesHome.textDegrePrevision}>{prevTemp}ºC</Text>
             </View>
 
             <View style={stylesHome.containerPrevision}>
             <Image source={require('../assets/sun.png')} style={stylesHome.imgPrevision}></Image>
-            <Text style={stylesHome.textDegrePrevision}>17:15</Text>
-            <Text style={stylesHome.textDegrePrevision}>25º</Text>
+            <Text style={stylesHome.textDegrePrevision}>{prevDt1}</Text>
+    <Text style={stylesHome.textDegrePrevision}>{prevTemp1}ºC</Text>
             </View>
 
             <View style={stylesHome.containerPrevision}>
             <Image source={require('../assets/sun.png')} style={stylesHome.imgPrevision}></Image>
-            <Text style={stylesHome.textDegrePrevision}>19:15</Text>
-            <Text style={stylesHome.textDegrePrevision}>25º</Text>
+            <Text style={stylesHome.textDegrePrevision}>{prevDt2}</Text>
+            <Text style={stylesHome.textDegrePrevision}>{prevTemp2}ºC</Text>
             </View>
 
         </View>
@@ -70,6 +84,6 @@ const stylesHome = StyleSheet.create({
     },
     textDegrePrevision: {
         color: 'white',
-        fontSize: 20,
+        fontSize: 13,
     }
 })
