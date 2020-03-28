@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import { StyleSheet, Text, View, Image} from 'react-native';
 
-import * as Font from 'expo-font';
-import { setConfigurationAsync } from 'expo/build/AR';
+// import * as Font from 'expo-font';
+// import { setConfigurationAsync } from 'expo/build/AR';
 
 // Font.loadAsync({
 //   'Dosis': {
@@ -29,7 +29,6 @@ export default function Home() {
     const [min, setMin] = useState('');
     const [max, setMax] = useState('');
     const [iconHome, setIconHome] = useState('');
-    // const [country, setCountry] = useState('');
 
     const ville = "Toulouse";
     const apikey = "008b40e40732624e015ce068cbf7ac72"
@@ -45,7 +44,6 @@ fetch(
         //    setMin(r.main.temp_min.toFixed(1))
         //    setMax(r.main.temp_max.toFixed(1))
            setIconHome(r.weather[0].icon) 
-        //    setCountry(getCountryName(r.sys.country))
         });
 
 

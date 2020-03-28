@@ -2,6 +2,15 @@ import React, {useState} from 'react';
 import { StyleSheet, Text, View, Image} from 'react-native';
 import { setProvidesAudioData } from 'expo/build/AR';
 
+// import * as Font from 'expo-font';
+// import { setConfigurationAsync } from 'expo/build/AR';
+
+// Font.loadAsync({
+//     'Dosis': {
+//       uri: require('../assets/fonts/Dosis.ttf'),
+//     },
+//   })
+
 export default function Previsions() {
 
     const [city, setCity] = useState('');
