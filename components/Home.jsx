@@ -13,12 +13,15 @@ import { setConfigurationAsync } from 'expo/build/AR';
 
 export default function Home() {
 
-    var date = new Date().getDate(); 
+    var d = new Date().getDate(); 
+    var date = d.toString().padStart(2,'0');
     var m = new Date().getMonth() + 1; 
     var month = m.toString().padStart(2,'0'); //Ajoute 0 pour faire 2 carractères
     var year = new Date().getFullYear(); 
-    var heure = new Date().getHours(); 
-    var minu = new Date().getMinutes(); 
+    var h = new Date().getHours(); 
+    var heure = h.toString().padStart(2,'0');
+    var mi = new Date().getMinutes();
+    var minu = mi.toString().padStart(2,'0');
 
     const [city, setCity] = useState('');
     const [desc, setDesc] = useState('');
@@ -39,11 +42,12 @@ fetch(
            setCity(r.name) 
            setDesc(r.weather[0].description)
            setTemp(r.main.temp.toFixed(1))
-           setMin(r.main.temp_min.toFixed(1))
-           setMax(r.main.temp_max.toFixed(1))
+        //    setMin(r.main.temp_min.toFixed(1))
+        //    setMax(r.main.temp_max.toFixed(1))
            setIconHome(r.weather[0].icon) 
         //    setCountry(getCountryName(r.sys.country))
         });
+
 
     return (
 
@@ -54,9 +58,13 @@ fetch(
             </View>
             <View style={stylesHome.containerWeather}>
                 <Text style={stylesHome.cityTitle}>{city}</Text>
-                <Image source={require(`../assets/${iconHome}.png`)} style={stylesHome.imgLogo}></Image>
-    <Text style={stylesHome.bigTitleDegre}>{temp}ºC</Text>
-    <Text style={stylesHome.infoWeather}>{desc}</Text>
+                <Image style={stylesHome.imgLogo} source={{
+                uri: `http://openweathermap.org/img/wn/${iconHome}@2x.png`,
+                }}/>
+                
+
+                <Text style={stylesHome.bigTitleDegre}>{temp}ºC</Text>
+                <Text style={stylesHome.infoWeather}>{desc}</Text>
             </View>
         </View>
     );

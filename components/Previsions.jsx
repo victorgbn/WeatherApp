@@ -21,6 +21,7 @@ export default function Previsions() {
     const [prevTemp1, setPrevTemp1] = useState('');
     const [prevTemp2, setPrevTemp2] = useState('');
 
+
     const ville = "Toulouse";
     const apikey = "008b40e40732624e015ce068cbf7ac72";
 
@@ -43,32 +44,37 @@ export default function Previsions() {
                setPrevTemp1(r.list[1].main.temp)
                setPrevTemp2(r.list[2].main.temp)
 
-               setIcon(r.list[0].weather.icon)
-               setIcon1(r.list[1].weather.icon)
-               setIcon2(r.list[2].weather.icon)
-
-
+               setIcon(r.list[0].weather[0].icon)
+               setIcon1(r.list[1].weather[0].icon)
+               setIcon2(r.list[2].weather[0].icon)
             //    setCountry(getCountryName(r.sys.country))
             });
 
     return (
         <View>
             <View style={stylesHome.containerPrevision}>
-            <Image source={require(`../assets/${icon}.png`)} style={stylesHome.imgPrevision}></Image>
-            <Text style={stylesHome.textDegrePrevision}>{prevDt}</Text>
+            <Image style={stylesHome.imgPrevision} source={{
+                uri: `http://openweathermap.org/img/wn/${icon}@2x.png`,
+                }}/>
+                {/* <Text style={stylesHome.textDegrePrevision}>{prevDt}</Text> */}
+                <Text style={stylesHome.textDegrePrevision}>{prevDt}</Text>
             <Text style={stylesHome.textDegrePrevision}>{prevTemp}ºC</Text>
             </View>
 
             <View style={stylesHome.containerPrevision}>
-            <Image source={require(`../assets/${icon1}.png`)} style={stylesHome.imgPrevision}></Image>
-            <Text style={stylesHome.textDegrePrevision}>{prevDt1}</Text>
-    <Text style={stylesHome.textDegrePrevision}>{prevTemp1}ºC</Text>
+                <Image style={stylesHome.imgPrevision} source={{
+                    uri: `http://openweathermap.org/img/wn/${icon1}@2x.png`,
+                    }}/>
+                <Text style={stylesHome.textDegrePrevision}>{prevDt1}</Text>
+                <Text style={stylesHome.textDegrePrevision}>{prevTemp1}ºC</Text>
             </View>
 
             <View style={stylesHome.containerPrevision}>
-            <Image source={require(`../assets/${icon2}.png`)} style={stylesHome.imgPrevision}></Image>
-            <Text style={stylesHome.textDegrePrevision}>{prevDt2}</Text>
-            <Text style={stylesHome.textDegrePrevision}>{prevTemp2}ºC</Text>
+                <Image style={stylesHome.imgPrevision} source={{
+                    uri: `http://openweathermap.org/img/wn/${icon2}@2x.png`,
+                    }}/>
+                <Text style={stylesHome.textDegrePrevision}>{prevDt2}</Text>
+                <Text style={stylesHome.textDegrePrevision}>{prevTemp2}ºC</Text>
             </View>
 
         </View>
