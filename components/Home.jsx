@@ -13,21 +13,22 @@ import { StyleSheet, Text, View, Image} from 'react-native';
 
 export default function Home() {
 
-    var d = new Date().getDate(); 
-    var date = d.toString().padStart(2,'0');
-    var m = new Date().getMonth() + 1; 
-    var month = m.toString().padStart(2,'0'); //Ajoute 0 pour faire 2 carractères
-    var year = new Date().getFullYear(); 
-    var h = new Date().getHours(); 
-    var heure = h.toString().padStart(2,'0');
-    var mi = new Date().getMinutes();
-    var minu = mi.toString().padStart(2,'0');
+        var d = new Date().getDate(); 
+        var date = d.toString().padStart(2,'0');
+        var m = new Date().getMonth() + 1; 
+        var month = m.toString().padStart(2,'0'); //Ajoute 0 pour faire 2 carractères
+        var year = new Date().getFullYear(); 
+        var h = new Date().getHours(); 
+        var heure = h.toString().padStart(2,'0');
+        var mi = new Date().getMinutes();
+        var minu = mi.toString().padStart(2,'0');
+        
+    
+ 
 
     const [city, setCity] = useState('');
     const [desc, setDesc] = useState('');
     const [temp, setTemp] = useState('');
-    const [min, setMin] = useState('');
-    const [max, setMax] = useState('');
     const [iconHome, setIconHome] = useState('');
 
     const ville = "Toulouse";
@@ -41,8 +42,6 @@ fetch(
            setCity(r.name) 
            setDesc(r.weather[0].description)
            setTemp(r.main.temp.toFixed(1))
-        //    setMin(r.main.temp_min.toFixed(1))
-        //    setMax(r.main.temp_max.toFixed(1))
            setIconHome(r.weather[0].icon) 
         });
 
@@ -59,8 +58,6 @@ fetch(
                 <Image style={stylesHome.imgLogo} source={{
                 uri: `http://openweathermap.org/img/wn/${iconHome}@2x.png`,
                 }}/>
-                
-
                 <Text style={stylesHome.bigTitleDegre}>{temp}ºC</Text>
                 <Text style={stylesHome.infoWeather}>{desc}</Text>
             </View>
