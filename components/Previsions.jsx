@@ -39,13 +39,6 @@ export default function Previsions() {
             )
             .then((response) => response.json())
             .then(r => { 
-            //    setCity(r.name) 
-            //    setDesc(r.weather[0].description)
-            //    setTemp(r.main.temp.toFixed(1))
-            //    setMin(r.main.temp_min.toFixed(1))
-            //    setMax(r.main.temp_max.toFixed(1))
-            //    setIcon(r.weather[0].icon)
-
                setPrevDt(r.list[0].dt_txt)
                setPrevDt1(r.list[1].dt_txt)
                setPrevDt2(r.list[2].dt_txt)
@@ -56,7 +49,6 @@ export default function Previsions() {
                setIcon(r.list[0].weather[0].icon)
                setIcon1(r.list[1].weather[0].icon)
                setIcon2(r.list[2].weather[0].icon)
-            //    setCountry(getCountryName(r.sys.country))
             });
 
     return (
@@ -65,7 +57,6 @@ export default function Previsions() {
             <Image style={stylesHome.imgPrevision} source={{
                 uri: `http://openweathermap.org/img/wn/${icon}@2x.png`,
                 }}/>
-                {/* <Text style={stylesHome.textDegrePrevision}>{prevDt}</Text> */}
                 <Text style={stylesHome.textDegrePrevision}>{prevDt}</Text>
             <Text style={stylesHome.textDegrePrevision}>{prevTemp}ºC</Text>
             </View>
