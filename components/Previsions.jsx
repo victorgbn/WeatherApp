@@ -13,12 +13,6 @@ import { setProvidesAudioData } from 'expo/build/AR';
 
 export default function Previsions() {
 
-    const [city, setCity] = useState('');
-    const [desc, setDesc] = useState('');
-    const [temp, setTemp] = useState('');
-    const [min, setMin] = useState('');
-    const [max, setMax] = useState('');
-
     const [icon, setIcon] = useState('');
     const [icon1, setIcon1] = useState('');
     const [icon2, setIcon2] = useState('');
