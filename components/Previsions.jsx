@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import { StyleSheet, Text, View, Image} from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, Text, View, Image } from 'react-native';
 import { setProvidesAudioData } from 'expo/build/AR';
 
 // import * as Font from 'expo-font';
@@ -30,35 +30,35 @@ export default function Previsions() {
 
     fetch(
         `http://api.openweathermap.org/data/2.5/forecast?q=${ville}&appid=${apikey}&units=metric&lang=fr`
-            )
-            .then((response) => response.json())
-            .then(r => { 
-               setPrevDt(r.list[0].dt_txt)
-               setPrevDt1(r.list[1].dt_txt)
-               setPrevDt2(r.list[2].dt_txt)
-               setPrevTemp(r.list[0].main.temp)
-               setPrevTemp1(r.list[1].main.temp)
-               setPrevTemp2(r.list[2].main.temp)
+    )
+        .then((response) => response.json())
+        .then(r => {
+            setPrevDt(r.list[0].dt_txt)
+            setPrevDt1(r.list[1].dt_txt)
+            setPrevDt2(r.list[2].dt_txt)
+            setPrevTemp(r.list[5].main.temp)
+            setPrevTemp1(r.list[10].main.temp)
+            setPrevTemp2(r.list[15].main.temp)
 
-               setIcon(r.list[0].weather[0].icon)
-               setIcon1(r.list[1].weather[0].icon)
-               setIcon2(r.list[2].weather[0].icon)
-            });
+            setIcon(r.list[5].weather[0].icon)
+            setIcon1(r.list[10].weather[0].icon)
+            setIcon2(r.list[15].weather[0].icon)
+        });
 
     return (
         <View>
             <View style={stylesHome.containerPrevision}>
-            <Image style={stylesHome.imgPrevision} source={{
-                uri: `http://openweathermap.org/img/wn/${icon}@2x.png`,
-                }}/>
+                <Image style={stylesHome.imgPrevision} source={{
+                    uri: `http://openweathermap.org/img/wn/${icon}@2x.png`,
+                }} />
                 <Text style={stylesHome.textDegrePrevision}>{prevDt}</Text>
-            <Text style={stylesHome.textDegrePrevision}>{prevTemp}ºC</Text>
+                <Text style={stylesHome.textDegrePrevision}>{prevTemp}ºC</Text>
             </View>
 
             <View style={stylesHome.containerPrevision}>
                 <Image style={stylesHome.imgPrevision} source={{
                     uri: `http://openweathermap.org/img/wn/${icon1}@2x.png`,
-                    }}/>
+                }} />
                 <Text style={stylesHome.textDegrePrevision}>{prevDt1}</Text>
                 <Text style={stylesHome.textDegrePrevision}>{prevTemp1}ºC</Text>
             </View>
@@ -66,7 +66,7 @@ export default function Previsions() {
             <View style={stylesHome.containerPrevision}>
                 <Image style={stylesHome.imgPrevision} source={{
                     uri: `http://openweathermap.org/img/wn/${icon2}@2x.png`,
-                    }}/>
+                }} />
                 <Text style={stylesHome.textDegrePrevision}>{prevDt2}</Text>
                 <Text style={stylesHome.textDegrePrevision}>{prevTemp2}ºC</Text>
             </View>
@@ -77,13 +77,13 @@ export default function Previsions() {
 
 const stylesHome = StyleSheet.create({
     containerPrevision: {
-        borderBottomColor : 'white',
+        borderBottomColor: 'white',
         borderBottomWidth: 1,
         paddingBottom: 5,
         width: 265,
         marginTop: 10,
-        flexDirection:'row',
-        justifyContent:'space-between',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
         alignItems: 'center'
     },
     imgPrevision: {
